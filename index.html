@@ -3,79 +3,44 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Una pregunta azul 💙</title>
+<title>Para Bren 💙</title>
 
 <style>
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+  overflow-x: hidden;
+  background: black;
+  color: white;
+}
+
+/* SECCIONES */
+.section {
   height: 100vh;
-  background: linear-gradient(135deg, #a1c4fd, #c2e9fb);
   display: flex;
   justify-content: center;
   align-items: center;
-  font-family: 'Helvetica Neue', sans-serif;
-  overflow: hidden;
-  color: white;
   text-align: center;
+  padding: 20px;
+  transition: background 1.5s ease;
 }
 
-.container {
-  padding: 25px;
-  animation: fadeIn 2s ease-in-out;
+/* ESPACIO */
+#space {
+  background: radial-gradient(circle at bottom, #0a0f2c, #000);
+  position: relative;
+  overflow: hidden;
 }
 
-h1, p {
-  margin: 10px 0;
-}
-
-button {
-  padding: 12px 25px;
-  font-size: 18px;
-  margin: 10px;
-  border: none;
-  border-radius: 30px;
-  cursor: pointer;
-  transition: 0.3s;
-}
-
-#yes {
-  background-color: white;
-  color: #4a90e2;
-}
-
-#no {
-  background-color: #4a90e2;
-  color: white;
-}
-
-button:hover {
-  transform: scale(1.1);
-}
-
-/* Brillo del botón Sí */
-.glow {
-  animation: glow 1.5s infinite alternate;
-}
-
-@keyframes glow {
-  from {
-    box-shadow: 0 0 5px #ffffff;
-  }
-  to {
-    box-shadow: 0 0 20px #ffffff;
-  }
-}
-
-@keyframes fadeIn {
-  from {opacity: 0;}
-  to {opacity: 1;}
-}
-
-/* Estrellas */
+/* ESTRELLAS */
 .star {
   position: absolute;
-  width: 3px;
-  height: 3px;
+  width: 2px;
+  height: 2px;
   background: white;
   border-radius: 50%;
   animation: twinkle 3s infinite ease-in-out;
@@ -85,57 +50,184 @@ button:hover {
   0%,100% {opacity: 0.2;}
   50% {opacity: 1;}
 }
+
+/* TRANSICIÓN */
+#transition {
+  background: linear-gradient(to bottom, #0a0f2c, #6ea8ff);
+  color: white;
+}
+
+/* CIELO AZUL */
+#sky {
+  background: linear-gradient(to bottom, #87cfff, #dff3ff);
+  color: #003366;
+  position: relative;
+  overflow: hidden;
+}
+
+/* NUBES */
+.cloud {
+  position: absolute;
+  background: white;
+  border-radius: 50%;
+  opacity: 0.8;
+  filter: blur(8px);
+  animation: float 40s linear infinite;
+}
+
+@keyframes float {
+  from { transform: translateX(-200px); }
+  to { transform: translateX(120vw); }
+}
+
+/* TEXTO */
+h1 {
+  font-size: 2rem;
+  max-width: 600px;
+  line-height: 1.4;
+}
+
+/* BOTONES */
+.buttons {
+  margin-top: 30px;
+}
+
+button {
+  padding: 14px 28px;
+  font-size: 18px;
+  margin: 10px;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: all 0.4s ease;
+}
+
+#yes {
+  background: white;
+  color: #0066cc;
+}
+
+#no {
+  background: #0066cc;
+  color: white;
+  position: relative;
+}
+
+.glow {
+  animation: glow 1.5s infinite alternate;
+}
+
+@keyframes glow {
+  from { box-shadow: 0 0 5px #ffffff; }
+  to { box-shadow: 0 0 25px #ffffff; }
+}
+
+/* FINAL */
+#final {
+  font-size: 1.8rem;
+  animation: fadeIn 2s ease forwards;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.highlight {
+  animation: shine 2s infinite alternate;
+}
+
+@keyframes shine {
+  from { text-shadow: 0 0 5px #ffffff; }
+  to { text-shadow: 0 0 20px #ffffff; }
+}
 </style>
 </head>
 
 <body>
 
-<div class="container" id="content">
-  <h1>Hola Brenda 💙</h1>
-  <p>He estado pensando algo peligroso...</p>
-  <p>Creo que cualquiera podría tener un “gold rush” contigo ✨</p>
-  <p>Pero hay alguien que quiere adelantarse 😌</p>
-  <h2>¿Quieres ser mi San Valentín?</h2>
-
-  <button id="yes" onclick="yes()">✨ Sí</button>
-  <button id="no" onclick="no()">🙂 No</button>
+<!-- ESPACIO -->
+<div class="section" id="space">
+  <h1>
+    Hola mi Bren preciosa…<br><br>
+    Hay pensamientos que duran segundos.<br>
+    Y luego estás tú.
+  </h1>
 </div>
 
-<audio autoplay loop>
-  <source src="https://cdn.pixabay.com/audio/2022/03/15/audio_4e8e5b5f9f.mp3" type="audio/mp3">
-</audio>
+<!-- TRANSICIÓN -->
+<div class="section" id="transition">
+  <h1>
+    No dejo de pensar en ti<br>
+    ni un solo momento.
+  </h1>
+</div>
+
+<!-- CIELO AZUL -->
+<div class="section" id="sky">
+  <div id="content">
+    <h1>
+      Así que mejor lo pregunto claro…<br><br>
+      ¿Serías mi San Valentín?
+    </h1>
+
+    <div class="buttons">
+      <button id="yes" onclick="yes()">✨ Sí</button>
+      <button id="no" onclick="no()">🙂 No</button>
+    </div>
+  </div>
+</div>
 
 <script>
-let noClicks = 0;
-
-function yes() {
-  document.getElementById("content").innerHTML =
-  "<h1>Sabía que dirías que sí 💙✨</h1><p>Prometo una cita que valga la pena.</p><h2>— Alejandro</h2>";
-}
-
-function no() {
-  noClicks++;
-
-  if (noClicks === 1) {
-    document.querySelector("#content h2").innerText = "Sí ok, entiendo.";
-  } 
-  else if (noClicks === 2) {
-    document.querySelector("#content h2").innerText = "Yo siempre entiendo.";
-  } 
-  else {
-    document.querySelector("#content h2").innerText = "Solo hay una respuesta válida en este sistema.";
-    document.getElementById("yes").classList.add("glow");
-  }
-}
-
-// Crear estrellas
-for (let i = 0; i < 50; i++) {
+/* GENERAR ESTRELLAS */
+for (let i = 0; i < 120; i++) {
   let star = document.createElement("div");
   star.className = "star";
   star.style.top = Math.random() * window.innerHeight + "px";
   star.style.left = Math.random() * window.innerWidth + "px";
   star.style.animationDuration = (2 + Math.random() * 3) + "s";
-  document.body.appendChild(star);
+  document.getElementById("space").appendChild(star);
+}
+
+/* GENERAR NUBES */
+for (let i = 0; i < 6; i++) {
+  let cloud = document.createElement("div");
+  cloud.className = "cloud";
+  cloud.style.width = (150 + Math.random() * 100) + "px";
+  cloud.style.height = (80 + Math.random() * 40) + "px";
+  cloud.style.top = (Math.random() * 70) + "%";
+  document.getElementById("sky").appendChild(cloud);
+}
+
+let noClicks = 0;
+let scale = 1;
+
+function no() {
+  noClicks++;
+  const text = document.querySelector("#content h1");
+  const yesBtn = document.getElementById("yes");
+  const noBtn = document.getElementById("no");
+
+  if (noClicks === 1) text.innerHTML = "Ok.";
+  else if (noClicks === 2) text.innerHTML = "Entendido.";
+  else if (noClicks === 3) text.innerHTML = "Curioso…";
+  else text.innerHTML = "Porque solo hay una respuesta válida en este sistema.";
+
+  scale += 0.08;
+  yesBtn.style.transform = "scale(" + scale + ")";
+  yesBtn.classList.add("glow");
+
+  noBtn.style.transform = "translateX(" + (Math.random() * 20 - 10) + "px)";
+}
+
+function yes() {
+  document.getElementById("content").innerHTML = `
+    <div id="final">
+      Me gusta cuando las cosas salen bien.<br><br>
+      Te veo el <span class="highlight">sábado</span> saliendo a sorpresa.<br><br>
+      — Alejandro 💙
+    </div>
+  `;
 }
 </script>
 
