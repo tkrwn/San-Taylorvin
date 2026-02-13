@@ -1,1 +1,143 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Una pregunta azul 💙</title>
 
+<style>
+body {
+  margin: 0;
+  height: 100vh;
+  background: linear-gradient(135deg, #a1c4fd, #c2e9fb);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Helvetica Neue', sans-serif;
+  overflow: hidden;
+  color: white;
+  text-align: center;
+}
+
+.container {
+  padding: 25px;
+  animation: fadeIn 2s ease-in-out;
+}
+
+h1, p {
+  margin: 10px 0;
+}
+
+button {
+  padding: 12px 25px;
+  font-size: 18px;
+  margin: 10px;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+#yes {
+  background-color: white;
+  color: #4a90e2;
+}
+
+#no {
+  background-color: #4a90e2;
+  color: white;
+}
+
+button:hover {
+  transform: scale(1.1);
+}
+
+/* Brillo del botón Sí */
+.glow {
+  animation: glow 1.5s infinite alternate;
+}
+
+@keyframes glow {
+  from {
+    box-shadow: 0 0 5px #ffffff;
+  }
+  to {
+    box-shadow: 0 0 20px #ffffff;
+  }
+}
+
+@keyframes fadeIn {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}
+
+/* Estrellas */
+.star {
+  position: absolute;
+  width: 3px;
+  height: 3px;
+  background: white;
+  border-radius: 50%;
+  animation: twinkle 3s infinite ease-in-out;
+}
+
+@keyframes twinkle {
+  0%,100% {opacity: 0.2;}
+  50% {opacity: 1;}
+}
+</style>
+</head>
+
+<body>
+
+<div class="container" id="content">
+  <h1>Hola Brenda 💙</h1>
+  <p>He estado pensando algo peligroso...</p>
+  <p>Creo que cualquiera podría tener un “gold rush” contigo ✨</p>
+  <p>Pero hay alguien que quiere adelantarse 😌</p>
+  <h2>¿Quieres ser mi San Valentín?</h2>
+
+  <button id="yes" onclick="yes()">✨ Sí</button>
+  <button id="no" onclick="no()">🙂 No</button>
+</div>
+
+<audio autoplay loop>
+  <source src="https://cdn.pixabay.com/audio/2022/03/15/audio_4e8e5b5f9f.mp3" type="audio/mp3">
+</audio>
+
+<script>
+let noClicks = 0;
+
+function yes() {
+  document.getElementById("content").innerHTML =
+  "<h1>Sabía que dirías que sí 💙✨</h1><p>Prometo una cita que valga la pena.</p><h2>— Alejandro</h2>";
+}
+
+function no() {
+  noClicks++;
+
+  if (noClicks === 1) {
+    document.querySelector("#content h2").innerText = "Sí ok, entiendo.";
+  } 
+  else if (noClicks === 2) {
+    document.querySelector("#content h2").innerText = "Yo siempre entiendo.";
+  } 
+  else {
+    document.querySelector("#content h2").innerText = "Solo hay una respuesta válida en este sistema.";
+    document.getElementById("yes").classList.add("glow");
+  }
+}
+
+// Crear estrellas
+for (let i = 0; i < 50; i++) {
+  let star = document.createElement("div");
+  star.className = "star";
+  star.style.top = Math.random() * window.innerHeight + "px";
+  star.style.left = Math.random() * window.innerWidth + "px";
+  star.style.animationDuration = (2 + Math.random() * 3) + "s";
+  document.body.appendChild(star);
+}
+</script>
+
+</body>
+</html>
