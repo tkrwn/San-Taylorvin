@@ -6,199 +6,250 @@
 <title>Para Bren 💙</title>
 
 <style>
-html {
-  scroll-behavior: smooth;
-}
+html { scroll-behavior: smooth; }
 
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
-  overflow-x: hidden;
-}
-
-/* CONTENEDOR GENERAL */
-.section {
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  padding: 20px;
-  font-size: 2rem;
-  position: relative;
+body{
+  margin:0;
+  font-family:-apple-system,BlinkMacSystemFont,sans-serif;
+  overflow-x:hidden;
 }
 
 /* FONDO CONTINUO */
-.background {
-  position: fixed;
-  width: 100%;
-  height: 300vh;
-  top: 0;
-  left: 0;
-  background: linear-gradient(to bottom, #000814 0%, #001d3d 25%, #6ea8ff 55%, #bde0ff 75%, #dff6ff 100%);
-  z-index: -2;
+body{
+  background: linear-gradient(
+    to bottom,
+    #000814 0%,
+    #001d3d 25%,
+    #023e8a 45%,
+    #6ea8ff 65%,
+    #bde0ff 80%,
+    #dff6ff 100%
+  );
 }
+
+/* SECCIONES */
+.section{
+  height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  padding:20px;
+  font-size:2rem;
+  position:relative;
+}
+
+.dark{ color:white; }
+.light{ color:#003366; }
 
 /* ESTRELLAS */
-.star {
-  position: fixed;
-  width: 2px;
-  height: 2px;
-  background: white;
-  border-radius: 50%;
-  animation: twinkle 3s infinite ease-in-out;
-  z-index: -1;
+.star{
+  position:fixed;
+  width:2px;
+  height:2px;
+  background:white;
+  border-radius:50%;
+  animation:twinkle 3s infinite ease-in-out;
+  z-index:-1;
 }
 
-@keyframes twinkle {
-  0%,100% {opacity: 0.2;}
-  50% {opacity: 1;}
+@keyframes twinkle{
+  0%,100%{opacity:.2;}
+  50%{opacity:1;}
 }
 
 /* PRADERA */
-.field {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  height: 200px;
-  background: linear-gradient(to top, #74c69d, #b7e4c7);
+.field{
+  position:absolute;
+  bottom:0;
+  width:100%;
+  height:220px;
+  background:linear-gradient(to top,#52b788,#b7e4c7);
 }
 
-/* GINGER */
-.ginger {
-  position: absolute;
-  bottom: 120px;
-  width: 120px;
-  height: 100px;
-  background: white;
-  border-radius: 50% 50% 40% 40%;
-  left: 50%;
-  transform: translateX(-50%);
+/* GINGER MEJORADA */
+.ginger{
+  position:absolute;
+  bottom:130px;
+  left:50%;
+  transform:translateX(-50%);
+  width:130px;
+  height:110px;
+  background:white;
+  border-radius:60% 60% 50% 50%;
 }
 
-.ginger::before {
-  content: "";
-  position: absolute;
-  width: 40px;
-  height: 60px;
-  background: #a47148;
-  border-radius: 50%;
-  left: -20px;
-  top: 10px;
+.ginger .ear{
+  position:absolute;
+  width:40px;
+  height:65px;
+  background:#a47148;
+  border-radius:50%;
+  top:20px;
 }
 
-.ginger::after {
-  content: "";
-  position: absolute;
-  width: 40px;
-  height: 60px;
-  background: #a47148;
-  border-radius: 50%;
-  right: -20px;
-  top: 10px;
+.ginger .ear.left{ left:-25px; }
+.ginger .ear.right{ right:-25px; }
+
+.ginger .eye{
+  position:absolute;
+  width:8px;
+  height:8px;
+  background:black;
+  border-radius:50%;
+  top:45px;
+}
+
+.ginger .eye.left{ left:40px; }
+.ginger .eye.right{ right:40px; }
+
+.ginger .nose{
+  position:absolute;
+  width:12px;
+  height:8px;
+  background:#333;
+  border-radius:50%;
+  bottom:35px;
+  left:50%;
+  transform:translateX(-50%);
 }
 
 /* BOTONES */
-.buttons { margin-top: 30px; }
-
-button {
-  padding: 14px 28px;
-  font-size: 18px;
-  margin: 10px;
-  border: none;
-  border-radius: 30px;
-  cursor: pointer;
-  transition: all 0.4s ease;
+button{
+  padding:14px 28px;
+  font-size:18px;
+  margin:10px;
+  border:none;
+  border-radius:30px;
+  cursor:pointer;
+  transition:all .4s ease;
 }
 
-#yes {
-  background: white;
-  color: #0066cc;
+#yes{
+  background:white;
+  color:#0066cc;
 }
 
-#no {
-  background: #0066cc;
-  color: white;
+#no{
+  background:#0066cc;
+  color:white;
 }
 
-.glow {
-  animation: glow 1.5s infinite alternate;
+.glow{
+  animation:glow 1.5s infinite alternate;
 }
 
-@keyframes glow {
-  from { box-shadow: 0 0 5px #ffffff; }
-  to { box-shadow: 0 0 25px #ffffff; }
+@keyframes glow{
+  from{box-shadow:0 0 5px #fff;}
+  to{box-shadow:0 0 25px #fff;}
 }
 
-.highlight {
-  animation: shine 2s infinite alternate;
+.highlight{
+  animation:shine 2s infinite alternate;
 }
 
-@keyframes shine {
-  from { text-shadow: 0 0 5px #ffffff; }
-  to { text-shadow: 0 0 20px #ffffff; }
+@keyframes shine{
+  from{text-shadow:0 0 5px #fff;}
+  to{text-shadow:0 0 20px #fff;}
+}
+
+/* START SCREEN */
+#start{
+  position:fixed;
+  width:100%;
+  height:100%;
+  background:black;
+  color:white;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  z-index:10;
+}
+
+.startBtn{
+  margin-top:20px;
+  background:white;
+  color:black;
 }
 </style>
 </head>
 
 <body>
 
-<div class="background"></div>
+<div id="start">
+  <h1>Hola mi Bren preciosa 💙</h1>
+  <button class="startBtn" onclick="startExp()">🎵 Toca para empezar</button>
+</div>
 
-<div class="section">Hola mi Bren preciosa</div>
-<div class="section">Hay pensamientos que duran segundos</div>
-<div class="section">Y luego estás tú</div>
-<div class="section">No dejo de pensar en ti ni un solo momento</div>
+<audio id="music" loop>
+  <source src="https://cdn.pixabay.com/audio/2022/10/25/audio_946f2e06e0.mp3" type="audio/mp3">
+</audio>
 
-<div class="section">
+<div class="section dark">Hay pensamientos que duran segundos</div>
+<div class="section dark">Y luego estás tú</div>
+<div class="section light">No dejo de pensar en ti ni un solo momento</div>
+
+<div class="section light">
   <div id="content">
     Así que mejor lo pregunto claro…<br><br>
-    ¿Serías mi San Valentín?
-
-    <div class="buttons">
-      <button id="yes" onclick="yes()">✨ Sí</button>
-      <button id="no" onclick="no()">😔 No</button>
-    </div>
+    ¿Serías mi San Valentín?<br><br>
+    <button id="yes" onclick="yes()">✨ Sí</button>
+    <button id="no" onclick="no()">😌 No</button>
   </div>
 
   <div class="field"></div>
-  <div class="ginger"></div>
+
+  <div class="ginger">
+    <div class="ear left"></div>
+    <div class="ear right"></div>
+    <div class="eye left"></div>
+    <div class="eye right"></div>
+    <div class="nose"></div>
+  </div>
 </div>
 
 <script>
 /* ESTRELLAS */
-for (let i = 0; i < 120; i++) {
-  let star = document.createElement("div");
-  star.className = "star";
-  star.style.top = Math.random() * 100 + "%";
-  star.style.left = Math.random() * 100 + "%";
-  star.style.animationDuration = (2 + Math.random() * 3) + "s";
-  document.body.appendChild(star);
+for(let i=0;i<120;i++){
+  let s=document.createElement("div");
+  s.className="star";
+  s.style.top=Math.random()*50+"%";
+  s.style.left=Math.random()*100+"%";
+  document.body.appendChild(s);
 }
 
-let noClicks = 0;
-let scale = 1;
+/* MUSICA */
+function startExp(){
+  const m=document.getElementById("music");
+  m.volume=0.4;
+  m.play();
+  document.getElementById("start").style.display="none";
+}
 
-function no() {
+/* BOTONES */
+let noClicks=0;
+let scale=1;
+
+function no(){
   noClicks++;
-  const content = document.getElementById("content");
-  const yesBtn = document.getElementById("yes");
-  const noBtn = document.getElementById("no");
+  const c=document.getElementById("content");
+  const y=document.getElementById("yes");
+  const n=document.getElementById("no");
 
-  if (noClicks === 1) content.childNodes[0].nodeValue = "Sí ok entiendo";
-  else if (noClicks === 2) content.childNodes[0].nodeValue = "Yo siempre entiendo";
-  else if (noClicks === 3) content.childNodes[0].nodeValue = "Curioso…";
-  else content.childNodes[0].nodeValue = "Porque solo hay una respuesta válida en este sistema.";
+  if(noClicks===1)c.firstChild.nodeValue="Sí ok entiendo";
+  else if(noClicks===2)c.firstChild.nodeValue="Yo siempre entiendo";
+  else if(noClicks===3)c.firstChild.nodeValue="Curioso…";
+  else c.firstChild.nodeValue="Porque solo hay una respuesta válida en este sistema.";
 
-  scale += 0.08;
-  yesBtn.style.transform = "scale(" + scale + ")";
-  yesBtn.classList.add("glow");
-
-  noBtn.style.transform = "translateX(" + (Math.random() * 20 - 10) + "px)";
+  scale+=0.08;
+  y.style.transform="scale("+scale+")";
+  y.classList.add("glow");
+  n.style.transform="translateX("+(Math.random()*20-10)+"px)";
 }
 
-function yes() {
-  document.getElementById("content").innerHTML = `
+function yes(){
+  document.getElementById("content").innerHTML=`
     Sabía que dirías que sí.<br><br>
     Te veo el <span class="highlight">sábado</span> saliendo para la cita sorpresa.<br><br>
     El perro loco está enterado e invitado 🐶<br><br>
