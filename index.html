@@ -6,7 +6,9 @@
 <title>Para Bren 💙</title>
 
 <style>
-html { scroll-behavior: smooth; }
+html {
+  scroll-behavior: smooth;
+}
 
 body {
   margin: 0;
@@ -14,7 +16,7 @@ body {
   overflow-x: hidden;
 }
 
-/* SECCIONES */
+/* CONTENEDOR GENERAL */
 .section {
   height: 100vh;
   display: flex;
@@ -23,24 +25,29 @@ body {
   text-align: center;
   padding: 20px;
   font-size: 2rem;
+  position: relative;
 }
 
-/* ESPACIO */
-.space {
-  background: radial-gradient(circle at bottom, #0a0f2c, #000);
-  color: white;
-  position: relative;
-  overflow: hidden;
+/* FONDO CONTINUO */
+.background {
+  position: fixed;
+  width: 100%;
+  height: 300vh;
+  top: 0;
+  left: 0;
+  background: linear-gradient(to bottom, #000814 0%, #001d3d 25%, #6ea8ff 55%, #bde0ff 75%, #dff6ff 100%);
+  z-index: -2;
 }
 
 /* ESTRELLAS */
 .star {
-  position: absolute;
+  position: fixed;
   width: 2px;
   height: 2px;
   background: white;
   border-radius: 50%;
   animation: twinkle 3s infinite ease-in-out;
+  z-index: -1;
 }
 
 @keyframes twinkle {
@@ -48,40 +55,47 @@ body {
   50% {opacity: 1;}
 }
 
-/* TRANSICIÓN */
-.transition {
-  background: linear-gradient(to bottom, #0a0f2c, #6ea8ff);
-  color: white;
-}
-
-/* CIELO */
-.sky {
-  background: linear-gradient(to bottom, #87cfff, #dff3ff);
-  color: #003366;
-  position: relative;
-  overflow: hidden;
-}
-
-/* NUBES */
-.cloud {
+/* PRADERA */
+.field {
   position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 200px;
+  background: linear-gradient(to top, #74c69d, #b7e4c7);
+}
+
+/* GINGER */
+.ginger {
+  position: absolute;
+  bottom: 120px;
+  width: 120px;
+  height: 100px;
   background: white;
+  border-radius: 50% 50% 40% 40%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.ginger::before {
+  content: "";
+  position: absolute;
+  width: 40px;
+  height: 60px;
+  background: #a47148;
   border-radius: 50%;
-  opacity: 0.8;
-  filter: blur(8px);
-  animation: float 60s linear infinite;
-  z-index: 0;
+  left: -20px;
+  top: 10px;
 }
 
-@keyframes float {
-  from { transform: translateX(-200px); }
-  to { transform: translateX(120vw); }
-}
-
-/* CONTENIDO SOBRE NUBES */
-.content {
-  position: relative;
-  z-index: 2;
+.ginger::after {
+  content: "";
+  position: absolute;
+  width: 40px;
+  height: 60px;
+  background: #a47148;
+  border-radius: 50%;
+  right: -20px;
+  top: 10px;
 }
 
 /* BOTONES */
@@ -105,7 +119,6 @@ button {
 #no {
   background: #0066cc;
   color: white;
-  position: relative;
 }
 
 .glow {
@@ -130,49 +143,37 @@ button {
 
 <body>
 
-<div class="section space">Hola mi Bren preciosa</div>
+<div class="background"></div>
 
-<div class="section space">Hay pensamientos que duran segundos</div>
+<div class="section">Hola mi Bren preciosa</div>
+<div class="section">Hay pensamientos que duran segundos</div>
+<div class="section">Y luego estás tú</div>
+<div class="section">No dejo de pensar en ti ni un solo momento</div>
 
-<div class="section space">Y luego estás tú</div>
-
-<div class="section transition">
-  No dejo de pensar en ti<br>ni un solo momento
-</div>
-
-<div class="section sky">
-  <div class="content" id="content">
+<div class="section">
+  <div id="content">
     Así que mejor lo pregunto claro…<br><br>
     ¿Serías mi San Valentín?
 
     <div class="buttons">
       <button id="yes" onclick="yes()">✨ Sí</button>
-      <button id="no" onclick="no()">🙂 No</button>
+      <button id="no" onclick="no()">😔 No</button>
     </div>
   </div>
+
+  <div class="field"></div>
+  <div class="ginger"></div>
 </div>
 
 <script>
 /* ESTRELLAS */
-document.querySelectorAll(".space").forEach(section => {
-  for (let i = 0; i < 80; i++) {
-    let star = document.createElement("div");
-    star.className = "star";
-    star.style.top = Math.random() * 100 + "%";
-    star.style.left = Math.random() * 100 + "%";
-    star.style.animationDuration = (2 + Math.random() * 3) + "s";
-    section.appendChild(star);
-  }
-});
-
-/* NUBES */
-for (let i = 0; i < 5; i++) {
-  let cloud = document.createElement("div");
-  cloud.className = "cloud";
-  cloud.style.width = (150 + Math.random() * 100) + "px";
-  cloud.style.height = (80 + Math.random() * 40) + "px";
-  cloud.style.top = (10 + Math.random() * 40) + "%";
-  document.querySelector(".sky").appendChild(cloud);
+for (let i = 0; i < 120; i++) {
+  let star = document.createElement("div");
+  star.className = "star";
+  star.style.top = Math.random() * 100 + "%";
+  star.style.left = Math.random() * 100 + "%";
+  star.style.animationDuration = (2 + Math.random() * 3) + "s";
+  document.body.appendChild(star);
 }
 
 let noClicks = 0;
@@ -200,6 +201,7 @@ function yes() {
   document.getElementById("content").innerHTML = `
     Sabía que dirías que sí.<br><br>
     Te veo el <span class="highlight">sábado</span> saliendo para la cita sorpresa.<br><br>
+    El perro loco está enterado e invitado 🐶<br><br>
     — Ale 💙
   `;
 }
