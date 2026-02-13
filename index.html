@@ -6,16 +6,12 @@
 <title>Para Bren 💙</title>
 
 <style>
-html {
-  scroll-behavior: smooth;
-}
+html { scroll-behavior: smooth; }
 
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, sans-serif;
   overflow-x: hidden;
-  background: black;
-  color: white;
 }
 
 /* SECCIONES */
@@ -26,12 +22,13 @@ body {
   align-items: center;
   text-align: center;
   padding: 20px;
-  transition: background 1.5s ease;
+  font-size: 2rem;
 }
 
 /* ESPACIO */
-#space {
+.space {
   background: radial-gradient(circle at bottom, #0a0f2c, #000);
+  color: white;
   position: relative;
   overflow: hidden;
 }
@@ -52,13 +49,13 @@ body {
 }
 
 /* TRANSICIÓN */
-#transition {
+.transition {
   background: linear-gradient(to bottom, #0a0f2c, #6ea8ff);
   color: white;
 }
 
-/* CIELO AZUL */
-#sky {
+/* CIELO */
+.sky {
   background: linear-gradient(to bottom, #87cfff, #dff3ff);
   color: #003366;
   position: relative;
@@ -72,7 +69,8 @@ body {
   border-radius: 50%;
   opacity: 0.8;
   filter: blur(8px);
-  animation: float 40s linear infinite;
+  animation: float 60s linear infinite;
+  z-index: 0;
 }
 
 @keyframes float {
@@ -80,17 +78,14 @@ body {
   to { transform: translateX(120vw); }
 }
 
-/* TEXTO */
-h1 {
-  font-size: 2rem;
-  max-width: 600px;
-  line-height: 1.4;
+/* CONTENIDO SOBRE NUBES */
+.content {
+  position: relative;
+  z-index: 2;
 }
 
 /* BOTONES */
-.buttons {
-  margin-top: 30px;
-}
+.buttons { margin-top: 30px; }
 
 button {
   padding: 14px 28px;
@@ -122,17 +117,6 @@ button {
   to { box-shadow: 0 0 25px #ffffff; }
 }
 
-/* FINAL */
-#final {
-  font-size: 1.8rem;
-  animation: fadeIn 2s ease forwards;
-}
-
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
-
 .highlight {
   animation: shine 2s infinite alternate;
 }
@@ -146,30 +130,20 @@ button {
 
 <body>
 
-<!-- ESPACIO -->
-<div class="section" id="space">
-  <h1>
-    Hola mi Bren preciosa…<br><br>
-    Hay pensamientos que duran segundos.<br>
-    Y luego estás tú.
-  </h1>
+<div class="section space">Hola mi Bren preciosa</div>
+
+<div class="section space">Hay pensamientos que duran segundos</div>
+
+<div class="section space">Y luego estás tú</div>
+
+<div class="section transition">
+  No dejo de pensar en ti<br>ni un solo momento
 </div>
 
-<!-- TRANSICIÓN -->
-<div class="section" id="transition">
-  <h1>
-    No dejo de pensar en ti<br>
-    ni un solo momento.
-  </h1>
-</div>
-
-<!-- CIELO AZUL -->
-<div class="section" id="sky">
-  <div id="content">
-    <h1>
-      Así que mejor lo pregunto claro…<br><br>
-      ¿Serías mi San Valentín?
-    </h1>
+<div class="section sky">
+  <div class="content" id="content">
+    Así que mejor lo pregunto claro…<br><br>
+    ¿Serías mi San Valentín?
 
     <div class="buttons">
       <button id="yes" onclick="yes()">✨ Sí</button>
@@ -179,24 +153,26 @@ button {
 </div>
 
 <script>
-/* GENERAR ESTRELLAS */
-for (let i = 0; i < 120; i++) {
-  let star = document.createElement("div");
-  star.className = "star";
-  star.style.top = Math.random() * window.innerHeight + "px";
-  star.style.left = Math.random() * window.innerWidth + "px";
-  star.style.animationDuration = (2 + Math.random() * 3) + "s";
-  document.getElementById("space").appendChild(star);
-}
+/* ESTRELLAS */
+document.querySelectorAll(".space").forEach(section => {
+  for (let i = 0; i < 80; i++) {
+    let star = document.createElement("div");
+    star.className = "star";
+    star.style.top = Math.random() * 100 + "%";
+    star.style.left = Math.random() * 100 + "%";
+    star.style.animationDuration = (2 + Math.random() * 3) + "s";
+    section.appendChild(star);
+  }
+});
 
-/* GENERAR NUBES */
-for (let i = 0; i < 6; i++) {
+/* NUBES */
+for (let i = 0; i < 5; i++) {
   let cloud = document.createElement("div");
   cloud.className = "cloud";
   cloud.style.width = (150 + Math.random() * 100) + "px";
   cloud.style.height = (80 + Math.random() * 40) + "px";
-  cloud.style.top = (Math.random() * 70) + "%";
-  document.getElementById("sky").appendChild(cloud);
+  cloud.style.top = (10 + Math.random() * 40) + "%";
+  document.querySelector(".sky").appendChild(cloud);
 }
 
 let noClicks = 0;
@@ -204,14 +180,14 @@ let scale = 1;
 
 function no() {
   noClicks++;
-  const text = document.querySelector("#content h1");
+  const content = document.getElementById("content");
   const yesBtn = document.getElementById("yes");
   const noBtn = document.getElementById("no");
 
-  if (noClicks === 1) text.innerHTML = "Ok.";
-  else if (noClicks === 2) text.innerHTML = "Entendido.";
-  else if (noClicks === 3) text.innerHTML = "Curioso…";
-  else text.innerHTML = "Porque solo hay una respuesta válida en este sistema.";
+  if (noClicks === 1) content.childNodes[0].nodeValue = "Sí ok entiendo";
+  else if (noClicks === 2) content.childNodes[0].nodeValue = "Yo siempre entiendo";
+  else if (noClicks === 3) content.childNodes[0].nodeValue = "Curioso…";
+  else content.childNodes[0].nodeValue = "Porque solo hay una respuesta válida en este sistema.";
 
   scale += 0.08;
   yesBtn.style.transform = "scale(" + scale + ")";
@@ -222,11 +198,9 @@ function no() {
 
 function yes() {
   document.getElementById("content").innerHTML = `
-    <div id="final">
-      Me gusta cuando las cosas salen bien.<br><br>
-      Te veo el <span class="highlight">sábado</span> saliendo a sorpresa.<br><br>
-      — Alejandro 💙
-    </div>
+    Sabía que dirías que sí.<br><br>
+    Te veo el <span class="highlight">sábado</span> saliendo para la cita sorpresa.<br><br>
+    — Ale 💙
   `;
 }
 </script>
